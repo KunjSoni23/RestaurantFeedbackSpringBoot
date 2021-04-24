@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to Restaurants Review</title>
+<link rel="stylesheet" type="text/css" href="css/index.css" th:href="@{/css/index.css}">
+</head>
+<body>
+<section>
+	<div id="review">
+		<br>
+		<br>
+		<br>
+	
+		<table >
+			<tr>
+				<td align="center" colspan="6" class="title"><strong>Reviews</strong></td>
+			</tr>
+			
+			<tr><td></td><tr>
+			
+			<tr>
+				<th>ID</th>
+				<th>Restaurant Name</th>
+				<th>Review</th>
+				<th>Date</th>
+				<th>Time</th>
+			</tr>
+		
+			<tr th:each="i : ${restaurantReviews}">
+				<td th:text="${i.id}"  class="output"></td>
+				<td th:text="${i.name}"  class="output"></td>
+				<td th:text="${i.review}"  class="output"></td>
+				<td th:text="${i.reviewDate}"  class="output"></td>
+				<td th:text="${i.reviewTime}"  class="output"></td>
+			</tr>
+		</table>
+	</div>
+	
+	<br>
+	<br>
+	
+	<div id="form">
+		<form th:method="post" th:action="@{/}" th:object="${restaurantReview}">
+			<table>
+				<tr><td align="center" colspan="2" class="title"><strong>Restaurant Feedback  Form</strong></td></tr>
+				<tr><td></td><tr>
+				<tr><td class="n">Restaurant Name:</td><td align="center"><input type="text"  th:field="*{name}" /></td></tr>
+				<tr><td class="n">Review: </td><td align="center"><input type="text"  th:field="*{review}"  /></td></tr>
+				<tr><td class="n">Day: </td><td align="center"><input type="date" th:field="*{reviewDate}"   /></td></tr>
+				<tr><td class="n">Time: </td><td align="center"><input type="time" th:field="*{reviewTime}" /></td></tr>
+				<tr><td align="center" colspan="2" class="n1"><input type="submit" value="Submit Review" /></td></tr>
+			</table>
+		</form>
+		
+			<br>
+		<br>
+		<br>
+	</div>
+
+</section>
+</body>
+</html>
